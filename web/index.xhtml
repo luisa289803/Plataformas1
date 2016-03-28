@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{usuarioController.validarSesion()}"/>
+    </f:metadata>
+    <ui:composition template="/welcomePrimefaces.xhtml">
+        <ui:define name="center" >
+            <br />
+            <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+            <br />
+            <h:link outcome="/admin/acudiente/List" value="Show All Acudiente Items"/>
+            <br />
+            <h:link outcome="/admin/auditoria/List" value="Show All Auditoria Items"/>
+            <br />
+            <h:link outcome="/admin/calificaciones/List" value="Show All Calificaciones Items"/>
+            <br />
+            <h:link outcome="/admin/competencia/List" value="Show All Competencia Items"/>
+            <br />
+            <h:link outcome="/admin/docente/List" value="Show All Docente Items"/>
+            <br />
+            <h:link outcome="/admin/docentemateria/List" value="Show All Docentemateria Items"/>
+            <br />
+            <h:link outcome="/admin/estudiante/List" value="Show All Estudiante Items"/>
+            <br />
+            <h:link outcome="/admin/evaluacion/List" value="Show All Evaluacion Items"/>
+            <br />
+            <h:link outcome="/admin/fallas/List" value="Show All Fallas Items"/>
+            <br />
+            <h:link outcome="/admin/grado/List" value="Show All Grado Items"/>
+            <br />
+            <h:link outcome="/admin/horario/List" value="Show All Horario Items"/>
+            <br />
+            <h:link outcome="/admin/logro/List" value="Show All Logro Items"/>
+            <br />
+            <h:link outcome="/admin/materia/List" value="Show All Materia Items"/>
+            <br />
+            <h:link outcome="/admin/mensaje/List" value="Show All Mensaje Items"/>
+            <br />
+            <h:link outcome="/admin/preguntas/List" value="Show All Preguntas Items"/>
+            <br />
+            <h:link outcome="/admin/rol/List" value="Show All Rol Items"/>
+            <br />
+            <h:link outcome="/admin/tareas/List" value="Show All Tareas Items"/>
+            <br />
+            <h:link outcome="/admin/tipodocumento/List" value="Show All Tipodocumento Items"/>
+            <br />
+            <h:link outcome="/admin/usuario/List" value="Show All Usuario Items"/>
+        </ui:define>
+
+
+
+
+
+
+
+
+
+
+
+
+    </ui:composition>
+</html>
+
+
