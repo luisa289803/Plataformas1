@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AcudienteViewDlg" widgetVar="AcudienteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewAcudienteTitle}">
+            <h:form id="AcudienteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{acudienteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewAcudienteLabel_idacudiente}"/>
+                        <h:outputText value="#{acudienteController.selected.idacudiente}" title="#{bundle.ViewAcudienteTitle_idacudiente}"/>
+                        <h:outputText value="#{bundle.ViewAcudienteLabel_documentoAcudiente}"/>
+                        <h:outputText value="#{acudienteController.selected.documentoAcudiente}" title="#{bundle.ViewAcudienteTitle_documentoAcudiente}"/>
+                        <h:outputText value="#{bundle.ViewAcudienteLabel_nombreAcudiente}"/>
+                        <h:outputText value="#{acudienteController.selected.nombreAcudiente}" title="#{bundle.ViewAcudienteTitle_nombreAcudiente}"/>
+                        <h:outputText value="#{bundle.ViewAcudienteLabel_apellidoAcudiente}"/>
+                        <h:outputText value="#{acudienteController.selected.apellidoAcudiente}" title="#{bundle.ViewAcudienteTitle_apellidoAcudiente}"/>
+                        <h:outputText value="#{bundle.ViewAcudienteLabel_telefonoAcudiente}"/>
+                        <h:outputText value="#{acudienteController.selected.telefonoAcudiente}" title="#{bundle.ViewAcudienteTitle_telefonoAcudiente}"/>
+                        <h:outputText value="#{bundle.ViewAcudienteLabel_direccionAcudiente}"/>
+                        <h:outputText value="#{acudienteController.selected.direccionAcudiente}" title="#{bundle.ViewAcudienteTitle_direccionAcudiente}"/>
+                        <h:outputText value="#{bundle.ViewAcudienteLabel_profesionAcudiente}"/>
+                        <h:outputText value="#{acudienteController.selected.profesionAcudiente}" title="#{bundle.ViewAcudienteTitle_profesionAcudiente}"/>
+                        <h:outputText value="#{bundle.ViewAcudienteLabel_eliminar}"/>
+                        <p:selectBooleanCheckbox value="#{acudienteController.selected.eliminar}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewAcudienteLabel_idestudiante}"/>
+                        <h:outputText value="#{acudienteController.selected.idestudiante}" title="#{bundle.ViewAcudienteTitle_idestudiante}"/>
+                        <h:outputText value="#{bundle.ViewAcudienteLabel_idtipoDocumento}"/>
+                        <h:outputText value="#{acudienteController.selected.idtipoDocumento}" title="#{bundle.ViewAcudienteTitle_idtipoDocumento}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="AcudienteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

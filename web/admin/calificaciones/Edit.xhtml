@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CalificacionesEditDlg" widgetVar="CalificacionesEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCalificacionesTitle}">
+            <h:form id="CalificacionesEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{calificacionesController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCalificacionesLabel_idCalificaciones}" for="idCalificaciones" />
+                        <p:inputText id="idCalificaciones" value="#{calificacionesController.selected.idCalificaciones}" title="#{bundle.EditCalificacionesTitle_idCalificaciones}" required="true" requiredMessage="#{bundle.EditCalificacionesRequiredMessage_idCalificaciones}"/>
+                        <p:outputLabel value="#{bundle.EditCalificacionesLabel_nota}" for="nota" />
+                        <p:inputText id="nota" value="#{calificacionesController.selected.nota}" title="#{bundle.EditCalificacionesTitle_nota}" required="true" requiredMessage="#{bundle.EditCalificacionesRequiredMessage_nota}"/>
+                        <p:outputLabel value="#{bundle.EditCalificacionesLabel_periodo}" for="periodo" />
+                        <p:inputText id="periodo" value="#{calificacionesController.selected.periodo}" title="#{bundle.EditCalificacionesTitle_periodo}" required="true" requiredMessage="#{bundle.EditCalificacionesRequiredMessage_periodo}"/>
+                        <p:outputLabel value="#{bundle.EditCalificacionesLabel_iddocenteMateria}" for="iddocenteMateria" />
+                        <p:selectOneMenu id="iddocenteMateria" value="#{calificacionesController.selected.iddocenteMateria}" required="true" requiredMessage="#{bundle.EditCalificacionesRequiredMessage_iddocenteMateria}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{docentemateriaController.itemsAvailableSelectOne}"
+                                           var="iddocenteMateriaItem"
+                                           itemValue="#{iddocenteMateriaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditCalificacionesLabel_idestudiante}" for="idestudiante" />
+                        <p:selectOneMenu id="idestudiante" value="#{calificacionesController.selected.idestudiante}" required="true" requiredMessage="#{bundle.EditCalificacionesRequiredMessage_idestudiante}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{estudianteController.itemsAvailableSelectOne}"
+                                           var="idestudianteItem"
+                                           itemValue="#{idestudianteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditCalificacionesLabel_idlogro}" for="idlogro" />
+                        <p:selectOneMenu id="idlogro" value="#{calificacionesController.selected.idlogro}" required="true" requiredMessage="#{bundle.EditCalificacionesRequiredMessage_idlogro}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{logroController.itemsAvailableSelectOne}"
+                                           var="idlogroItem"
+                                           itemValue="#{idlogroItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{calificacionesController.update}" value="#{bundle.Save}" update="display,:CalificacionesListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CalificacionesEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CalificacionesEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

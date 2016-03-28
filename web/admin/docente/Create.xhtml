@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DocenteCreateDlg" widgetVar="DocenteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDocenteTitle}">
+            <h:form id="DocenteCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{docenteController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDocenteLabel_documento}" for="documento" />
+                        <p:inputText id="documento" value="#{docenteController.selected.documento}" title="#{bundle.CreateDocenteTitle_documento}" required="true" requiredMessage="#{bundle.CreateDocenteRequiredMessage_documento}"/>
+                        <p:outputLabel value="#{bundle.CreateDocenteLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{docenteController.selected.nombre}" title="#{bundle.CreateDocenteTitle_nombre}" required="true" requiredMessage="#{bundle.CreateDocenteRequiredMessage_nombre}" validatorMessage="Nombre Incorrecto">
+                            <f:validateRegex pattern="^[A-ZÁÉÍÓÚa-záéíóúñ\s]+$" />
+                        </p:inputText>
+                        <p:outputLabel value="#{bundle.CreateDocenteLabel_apellido}" for="apellido" />
+                        <p:inputText id="apellido" value="#{docenteController.selected.apellido}" title="#{bundle.CreateDocenteTitle_apellido}" required="true" requiredMessage="#{bundle.CreateDocenteRequiredMessage_apellido}" validatorMessage="Apellido Incorrecto">
+                            <f:validateRegex pattern="^[A-ZÁÉÍÓÚa-záéíóúñ\s]+$" />
+                        </p:inputText>
+                        <p:outputLabel value="#{bundle.CreateDocenteLabel_telefono}" for="telefono" />
+                        <p:inputMask id="telefono" mask="(999) 999-9999" value="#{docenteController.selected.telefono}" title="#{bundle.CreateDocenteTitle_telefono}" />
+                        <p:outputLabel value="#{bundle.CreateDocenteLabel_correo}" for="correo" />
+                        <p:inputText id="correo" value="#{docenteController.selected.correo}" title="#{bundle.CreateDocenteTitle_correo}" required="true" requiredMessage="#{bundle.CreateDocenteRequiredMessage_correo}" validatorMessage="Correo Incorrecto">
+                            <f:validateRegex pattern="^([a-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$" />
+                        </p:inputText>
+                        <p:outputLabel value="#{bundle.CreateDocenteLabel_fechaNacimiento}" for="fechaNacimiento" />
+                        <p:calendar id="fechaNacimiento" pattern="MM/dd/yyyy" value="#{docenteController.selected.fechaNacimiento}" title="#{bundle.EditDocenteTitle_fechaNacimiento}" required="true" requiredMessage="#{bundle.EditDocenteRequiredMessage_fechaNacimiento}" showOn="button" locale="es" />
+                        <p:outputLabel value="#{bundle.CreateDocenteLabel_idtipoDocumento}" for="idtipoDocumento" />
+                        <p:selectOneMenu id="idtipoDocumento" value="#{docenteController.selected.idtipoDocumento}" required="true" requiredMessage="#{bundle.EditDocenteRequiredMessage_idtipoDocumento}">
+                            <f:selectItems value="#{tipodocumentoController.itemsAvailableSelectOne}"
+                                           var="idtipoDocumentoItem"
+                                           itemLabel="#{idtipoDocumentoItem.tipoDocumento}"
+                                           itemValue="#{idtipoDocumentoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDocenteLabel_idusuario}" for="idusuario" />
+                        <p:selectOneMenu id="idusuario" value="#{docenteController.selected.idusuario}" required="true" requiredMessage="#{bundle.EditDocenteRequiredMessage_idusuario}">
+                            <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"
+                                           var="idusuarioItem"
+                                           itemLabel="#{idusuarioItem.usuario}"
+                                           itemValue="#{idusuarioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{docenteController.create}" value="#{bundle.Save}" update=":growl" oncomplete="handleSubmit(args,'DocenteCreateDialog');" onclick="DocenteCreateDialog.hiden()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DocenteCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+
+        </p:dialog>
+            <h:outputScript library="js" name="spanishLocale.js"/>
+
+    </ui:composition>
+</html>

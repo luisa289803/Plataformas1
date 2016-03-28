@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FallasEditDlg" widgetVar="FallasEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditFallasTitle}">
+            <h:form id="FallasEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fallasController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFallasLabel_idfallas}" for="idfallas" />
+                        <p:inputText id="idfallas" value="#{fallasController.selected.idfallas}" title="#{bundle.EditFallasTitle_idfallas}" required="true" requiredMessage="#{bundle.EditFallasRequiredMessage_idfallas}"/>
+                        <p:outputLabel value="#{bundle.EditFallasLabel_periodo}" for="periodo" />
+                        <p:inputText id="periodo" value="#{fallasController.selected.periodo}" title="#{bundle.EditFallasTitle_periodo}" required="true" requiredMessage="#{bundle.EditFallasRequiredMessage_periodo}"/>
+                        <p:outputLabel value="#{bundle.EditFallasLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="MM/dd/yyyy" value="#{fallasController.selected.fecha}" title="#{bundle.EditFallasTitle_fecha}" required="true" requiredMessage="#{bundle.EditFallasRequiredMessage_fecha}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditFallasLabel_estado}" for="estado" />
+                        <p:selectBooleanCheckbox id="estado" value="#{fallasController.selected.estado}" required="true" requiredMessage="#{bundle.EditFallasRequiredMessage_estado}"/>
+                        <p:outputLabel value="#{bundle.EditFallasLabel_idestudiante}" for="idestudiante" />
+                        <p:selectOneMenu id="idestudiante" value="#{fallasController.selected.idestudiante}" required="true" requiredMessage="#{bundle.EditFallasRequiredMessage_idestudiante}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{estudianteController.itemsAvailableSelectOne}"
+                                           var="idestudianteItem"
+                                           itemValue="#{idestudianteItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditFallasLabel_idhorario}" for="idhorario" />
+                        <p:selectOneMenu id="idhorario" value="#{fallasController.selected.idhorario}" required="true" requiredMessage="#{bundle.EditFallasRequiredMessage_idhorario}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{horarioController.itemsAvailableSelectOne}"
+                                           var="idhorarioItem"
+                                           itemValue="#{idhorarioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{fallasController.update}" value="#{bundle.Save}" update="display,:FallasListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FallasEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FallasEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

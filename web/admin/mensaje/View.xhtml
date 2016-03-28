@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MensajeViewDlg" widgetVar="MensajeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMensajeTitle}">
+            <h:form id="MensajeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{mensajeController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMensajeLabel_idmensaje}"/>
+                        <h:outputText value="#{mensajeController.selected.idmensaje}" title="#{bundle.ViewMensajeTitle_idmensaje}"/>
+                        <h:outputText value="#{bundle.ViewMensajeLabel_idrespuesta}"/>
+                        <h:outputText value="#{mensajeController.selected.idrespuesta}" title="#{bundle.ViewMensajeTitle_idrespuesta}"/>
+                        <h:outputText value="#{bundle.ViewMensajeLabel_mensaje}"/>
+                        <h:outputText value="#{mensajeController.selected.mensaje}" title="#{bundle.ViewMensajeTitle_mensaje}"/>
+                        <h:outputText value="#{bundle.ViewMensajeLabel_fechaEnvio}"/>
+                        <h:outputText value="#{mensajeController.selected.fechaEnvio}" title="#{bundle.ViewMensajeTitle_fechaEnvio}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewMensajeLabel_direccion}"/>
+                        <p:selectBooleanCheckbox value="#{mensajeController.selected.direccion}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewMensajeLabel_estado}"/>
+                        <p:selectBooleanCheckbox value="#{mensajeController.selected.estado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewMensajeLabel_eliminar}"/>
+                        <p:selectBooleanCheckbox value="#{mensajeController.selected.eliminar}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewMensajeLabel_iddocente}"/>
+                        <h:outputText value="#{mensajeController.selected.iddocente}" title="#{bundle.ViewMensajeTitle_iddocente}"/>
+                        <h:outputText value="#{bundle.ViewMensajeLabel_idestudiante}"/>
+                        <h:outputText value="#{mensajeController.selected.idestudiante}" title="#{bundle.ViewMensajeTitle_idestudiante}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MensajeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

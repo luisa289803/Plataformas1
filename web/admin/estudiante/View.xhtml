@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EstudianteViewDlg" widgetVar="EstudianteViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewEstudianteTitle}">
+            <h:form id="EstudianteViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{estudianteController.selected != null}">
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_idestudiante}"/>
+                        <h:outputText value="#{estudianteController.selected.idestudiante}" title="#{bundle.ViewEstudianteTitle_idestudiante}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_nombreEstudiante}"/>
+                        <h:outputText value="#{estudianteController.selected.nombreEstudiante}" title="#{bundle.ViewEstudianteTitle_nombreEstudiante}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_apellidoEstudiante}"/>
+                        <h:outputText value="#{estudianteController.selected.apellidoEstudiante}" title="#{bundle.ViewEstudianteTitle_apellidoEstudiante}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_documento}"/>
+                        <h:outputText value="#{estudianteController.selected.documento}" title="#{bundle.ViewEstudianteTitle_documento}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_fechaNacimiento}"/>
+                        <h:outputText value="#{estudianteController.selected.fechaNacimiento}" title="#{bundle.ViewEstudianteTitle_fechaNacimiento}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_direccion}"/>
+                        <h:outputText value="#{estudianteController.selected.direccion}" title="#{bundle.ViewEstudianteTitle_direccion}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_colegiosAnteriores}"/>
+                        <h:outputText value="#{estudianteController.selected.colegiosAnteriores}" title="#{bundle.ViewEstudianteTitle_colegiosAnteriores}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_telefono}"/>
+                        <h:outputText value="#{estudianteController.selected.telefono}" title="#{bundle.ViewEstudianteTitle_telefono}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_correo}"/>
+                        <h:outputText value="#{estudianteController.selected.correo}" title="#{bundle.ViewEstudianteTitle_correo}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_sexo}"/>
+                        <h:outputText value="#{estudianteController.selected.sexo}" title="#{bundle.ViewEstudianteTitle_sexo}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_eliminar}"/>
+                        <p:selectBooleanCheckbox value="#{estudianteController.selected.eliminar}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_idgrado}"/>
+                        <h:outputText value="#{estudianteController.selected.idgrado}" title="#{bundle.ViewEstudianteTitle_idgrado}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_idusuario}"/>
+                        <h:outputText value="#{estudianteController.selected.idusuario}" title="#{bundle.ViewEstudianteTitle_idusuario}"/>
+                        <h:outputText value="#{bundle.ViewEstudianteLabel_idtipoDocumento}"/>
+                        <h:outputText value="#{estudianteController.selected.idtipoDocumento}" title="#{bundle.ViewEstudianteTitle_idtipoDocumento}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="EstudianteViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

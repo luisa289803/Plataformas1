@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DocentemateriaEditDlg" widgetVar="DocentemateriaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDocentemateriaTitle}">
+            <h:form id="DocentemateriaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{docentemateriaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDocentemateriaLabel_iddocenteMateria}" for="iddocenteMateria" />
+                        <p:inputText id="iddocenteMateria" value="#{docentemateriaController.selected.iddocenteMateria}" title="#{bundle.EditDocentemateriaTitle_iddocenteMateria}" required="true" requiredMessage="#{bundle.EditDocentemateriaRequiredMessage_iddocenteMateria}"/>
+                        <p:outputLabel value="#{bundle.EditDocentemateriaLabel_idmateria}" for="idmateria" />
+                        <p:selectOneMenu id="idmateria" value="#{docentemateriaController.selected.idmateria}" required="true" requiredMessage="#{bundle.EditDocentemateriaRequiredMessage_idmateria}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{materiaController.itemsAvailableSelectOne}"
+                                           var="idmateriaItem"
+                                           itemValue="#{idmateriaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditDocentemateriaLabel_iddocente}" for="iddocente" />
+                        <p:selectOneMenu id="iddocente" value="#{docentemateriaController.selected.iddocente}" required="true" requiredMessage="#{bundle.EditDocentemateriaRequiredMessage_iddocente}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{docenteController.itemsAvailableSelectOne}"
+                                           var="iddocenteItem"
+                                           itemValue="#{iddocenteItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{docentemateriaController.update}" value="#{bundle.Save}" update="display,:DocentemateriaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DocentemateriaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DocentemateriaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

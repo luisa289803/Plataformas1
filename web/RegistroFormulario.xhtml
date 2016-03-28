@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <ui:composition template="./welcomePrimefaces.xhtml">
+            <ui:define name="center">
+                <h1>Registro</h1><hr></hr>
+                <h:form id="formulario">
+                    <h2>Datos Acudiente</h2>
+                    <div>
+                        <p:outputLabel value="#{bundle.CreateAcudienteLabel_documentoAcudiente}" for="documentoAcudiente" />
+                        <p:inputText id="documentoAcudiente" value="#{acudienteController.selected.documentoAcudiente}" title="#{bundle.CreateAcudienteTitle_documentoAcudiente}" required="true" requiredMessage="#{bundle.CreateAcudienteRequiredMessage_documentoAcudiente}"/>
+                    </div>
+                    <div>
+                        <p:outputLabel value="#{bundle.CreateAcudienteLabel_nombreAcudiente}" for="nombreAcudiente" />
+                        <p:inputText id="nombreAcudiente" value="#{acudienteController.selected.nombreAcudiente}" title="#{bundle.CreateAcudienteTitle_nombreAcudiente}" required="true" requiredMessage="#{bundle.CreateAcudienteRequiredMessage_nombreAcudiente}"/>
+                    </div>
+                    <div>
+                        <p:outputLabel value="#{bundle.CreateAcudienteLabel_apellidoAcudiente}" for="apellidoAcudiente" />
+                        <p:inputText id="apellidoAcudiente" value="#{acudienteController.selected.apellidoAcudiente}" title="#{bundle.CreateAcudienteTitle_apellidoAcudiente}" required="true" requiredMessage="#{bundle.CreateAcudienteRequiredMessage_apellidoAcudiente}"/>
+                    </div>
+                    <div>
+                        <p:outputLabel value="#{bundle.CreateAcudienteLabel_telefonoAcudiente}" for="telefonoAcudiente" />
+                        <p:inputText id="telefonoAcudiente" value="#{acudienteController.selected.telefonoAcudiente}" title="#{bundle.CreateAcudienteTitle_telefonoAcudiente}" required="true" requiredMessage="#{bundle.CreateAcudienteRequiredMessage_telefonoAcudiente}"/>
+                    </div>
+                    <div>
+                        <p:outputLabel value="#{bundle.CreateAcudienteLabel_direccionAcudiente}" for="direccionAcudiente" />
+                        <p:inputText id="direccionAcudiente" value="#{acudienteController.selected.direccionAcudiente}" title="#{bundle.CreateAcudienteTitle_direccionAcudiente}" required="true" requiredMessage="#{bundle.CreateAcudienteRequiredMessage_direccionAcudiente}"/>
+
+                    </div>
+                    <div>
+                        <p:outputLabel value="#{bundle.CreateAcudienteLabel_profesionAcudiente}" for="profesionAcudiente" />
+                        <p:inputText id="profesionAcudiente" value="#{acudienteController.selected.profesionAcudiente}" title="#{bundle.CreateAcudienteTitle_profesionAcudiente}" required="true" requiredMessage="#{bundle.CreateAcudienteRequiredMessage_profesionAcudiente}"/>
+                    </div>
+
+                    <div>
+                        <p:outputLabel value="#{bundle.CreateAcudienteLabel_idtipoDocumento}" for="idtipoDocumento" />
+                        <p:selectOneMenu id="idtipoDocumento2" value="#{acudienteController.selected.idtipoDocumento}" required="true" requiredMessage="#{bundle.EditAcudienteRequiredMessage_idtipoDocumento}">
+                            <f:selectItems value="#{tipodocumentoController.itemsAvailableSelectOne}"
+                                           var="idtipoDocumentoItems"
+                                           itemLabel="#{idtipoDocumentoItems.tipoDocumento}"
+                                           itemValue="#{idtipoDocumentoItems.tipoDocumento}"/>
+                        </p:selectOneMenu>
+                    </div>
+
+
+                    <hr></hr>
+                    <h2>Datos Estudiante</h2>
+
+                    <div>
+                        <p:outputLabel value="#{bundle.CreateEstudianteLabel_nombreEstudiante}" for="nombreEstudiante" />
+                        <p:inputText id="nombreEstudiante" value="#{estudianteController.selected.nombreEstudiante}" title="#{bundle.CreateEstudianteTitle_nombreEstudiante}" required="true" requiredMessage="#{bundle.CreateEstudianteRequiredMessage_nombreEstudiante}"/>
+                    </div>
+                    <div>
+                        <p:outputLabel value="#{bundle.CreateEstudianteLabel_apellidoEstudiante}" for="apellidoEstudiante" />
+                        <p:inputText id="apellidoEstudiante" value="#{estudianteController.selected.apellidoEstudiante}" title="#{bundle.CreateEstudianteTitle_apellidoEstudiante}" required="true" requiredMessage="#{bundle.CreateEstudianteRequiredMessage_apellidoEstudiante}"/><br/>
+                    </div>
+                    <div>
+                        <p:outputLabel value="#{bundle.CreateEstudianteLabel_documento}" for="documento" />
+                        <p:inputText id="documento" value="#{estudianteController.selected.documento}" title="#{bundle.CreateEstudianteTitle_documento}" required="true" requiredMessage="#{bundle.CreateEstudianteRequiredMessage_documento}"/>
+                    </div>
+                    <div>
+                        <p:outputLabel value="#{bundle.CreateEstudianteLabel_fechaNacimiento}" for="fechaNacimiento" />
+                        <p:calendar id="fechaNacimiento" pattern="MM/dd/yyyy" value="#{estudianteController.selected.fechaNacimiento}" title="#{bundle.EditEstudianteTitle_fechaNacimiento}" required="true" requiredMessage="#{bundle.EditEstudianteRequiredMessage_fechaNacimiento}" showOn="button"/>
+                    </div>
+                    <div>
+                        <p:outputLabel value="#{bundle.CreateEstudianteLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{estudianteController.selected.direccion}" title="#{bundle.CreateEstudianteTitle_direccion}" required="true" requiredMessage="#{bundle.CreateEstudianteRequiredMessage_direccion}"/>
+                    </div>
+                    <div>
+                        <p:outputLabel value="#{bundle.CreateEstudianteLabel_colegiosAnteriores}" for="colegiosAnteriores" />
+                        <p:inputText id="colegiosAnteriores" value="#{estudianteController.selected.colegiosAnteriores}" title="#{bundle.CreateEstudianteTitle_colegiosAnteriores}" required="true" requiredMessage="#{bundle.CreateEstudianteRequiredMessage_colegiosAnteriores}"/>
+                    </div>
+                    <div>
+                        <p:outputLabel value="#{bundle.CreateEstudianteLabel_telefono}" for="telefono" />
+                        <p:inputText id="telefono" value="#{estudianteController.selected.telefono}" title="#{bundle.CreateEstudianteTitle_telefono}" required="true" requiredMessage="#{bundle.CreateEstudianteRequiredMessage_telefono}"/>
+                    </div>
+                    <div>
+                        <p:outputLabel value="#{bundle.CreateEstudianteLabel_correo}" for="correo" />
+                        <p:inputText id="correo" value="#{estudianteController.selected.correo}" title="#{bundle.CreateEstudianteTitle_correo}" />
+                    </div>
+                    <div>
+                        <p:outputLabel value="#{bundle.CreateEstudianteLabel_sexo}" for="sexo" />
+                        <p:inputText id="sexo" value="#{estudianteController.selected.sexo}" title="#{bundle.CreateEstudianteTitle_sexo}" required="true" requiredMessage="#{bundle.CreateEstudianteRequiredMessage_sexo}"/>
+                    </div>
+                    <div>
+                        <p:outputLabel value="#{bundle.CreateEstudianteLabel_idtipoDocumento}" for="idtipoDocumento" />
+                        <p:selectOneMenu id="idtipoDocumento" value="#{estudianteController.selected.idtipoDocumento}" required="true" requiredMessage="#{bundle.EditEstudianteRequiredMessage_idtipoDocumento}">
+                            <f:selectItems value="#{tipodocumentoController.itemsAvailableSelectOne}"
+                                           var="idtipoDocumentoItem"
+                                           itemValue="#{idtipoDocumentoItem.tipoDocumento}"
+                                           itemLabel="#{idtipoDocumentoItem.tipoDocumento}"/>
+                        </p:selectOneMenu>
+                    </div>
+                    <hr></hr>
+                    <div>
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_usuario}" for="usuario" />
+                        <p:inputText id="usuario" value="#{usuarioController.selected.usuario}" title="#{bundle.CreateUsuarioTitle_usuario}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_usuario}"/>    
+                    </div>
+                    <div>
+                        <p:outputLabel value="#{bundle.CreateUsuarioLabel_clave}" for="clave" />
+                        <p:password id="clave" value="#{usuarioController.claveOculta}" title="#{bundle.CreateUsuarioTitle_clave}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_clave}" feedback="true" promptLabel="Ingrese Clave" weakLabel="Mala"
+                                    validatorMessage="Las Claves No Coinciden" goodLabel="Buena" strongLabel="Segura"/>
+                    </div>
+                    <div>
+                        <p:outputLabel value="Confirma Clave"/>
+                        <p:password id="clave2" value="#{usuarioController.claveOculta}" title="#{bundle.CreateUsuarioTitle_clave}" required="true" requiredMessage="#{bundle.CreateUsuarioRequiredMessage_clave}" feedback="true" promptLabel="Ingrese Clave" weakLabel="Mala"
+                                    validatorMessage="Las Claves No Coinciden" goodLabel="Buena" strongLabel="Segura"/>
+                    </div>
+                    <p:commandButton value="Registrar" action="#{acudienteController.registrarForm()}"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CompetenciaCreateDlg" widgetVar="CompetenciaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCompetenciaTitle}">
+            <h:form id="CompetenciaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{competenciaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCompetenciaLabel_idcompetencia}" for="idcompetencia" />
+                        <p:inputText id="idcompetencia" value="#{competenciaController.selected.idcompetencia}" title="#{bundle.CreateCompetenciaTitle_idcompetencia}" required="true" requiredMessage="#{bundle.CreateCompetenciaRequiredMessage_idcompetencia}"/>
+                        <p:outputLabel value="#{bundle.CreateCompetenciaLabel_descripcionCom}" for="descripcionCom" />
+                        <p:inputText id="descripcionCom" value="#{competenciaController.selected.descripcionCom}" title="#{bundle.CreateCompetenciaTitle_descripcionCom}" required="true" requiredMessage="#{bundle.CreateCompetenciaRequiredMessage_descripcionCom}"/>
+                        <p:outputLabel value="#{bundle.CreateCompetenciaLabel_periodo}" for="periodo" />
+                        <p:inputText id="periodo" value="#{competenciaController.selected.periodo}" title="#{bundle.CreateCompetenciaTitle_periodo}" required="true" requiredMessage="#{bundle.CreateCompetenciaRequiredMessage_periodo}"/>
+                        <p:outputLabel value="#{bundle.CreateCompetenciaLabel_idmateria}" for="idmateria" />
+                        <p:selectOneMenu id="idmateria" value="#{competenciaController.selected.idmateria}" required="true" requiredMessage="#{bundle.EditCompetenciaRequiredMessage_idmateria}">
+                            <f:selectItems value="#{materiaController.itemsAvailableSelectOne}"
+                                           var="idmateriaItem"
+                                           itemValue="#{idmateriaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{competenciaController.create}" value="#{bundle.Save}" update="display,:CompetenciaListForm:datalist,:growl" oncomplete="handleSubmit(args,'CompetenciaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CompetenciaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

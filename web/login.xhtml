@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Login </title>
+
+        <link rel="stylesheet" href="https://bootswatch.com/lumen/bootstrap.min.css"/>
+        <h:outputStylesheet name="css/bootstrap.min.css"/>
+
+        <style>
+
+            body{
+                background-image: url("resources/img/rueda_de_lapices_de_colores_wallpaper.jpg");
+                background-position: center;
+
+            }
+            form{
+                background: silver;
+                border-radius: 10px;
+                margin: 15px;
+                padding: 30px;
+
+            }
+            .margin{
+
+                margin-top:200px;
+                background-color:  #ffffff;
+                box-shadow: 1px 1px 4px black;
+            }
+            .boton{
+
+                margin: 20px;
+
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <h:form class="form-signin col-md-4 margin" >            
+                    <p:messages autoUpdate="true" closable="true" showDetail="true"/>
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="username" value="Usuario" />
+                        <p:inputText id="username" value="#{usuarioController.selected.usuario}" required="true" label="username" requiredMessage="Usuario Requerido" />
+                        <h:outputLabel for="password" value="Contraseña" />
+                        <p:password id="password" value="#{usuarioController.selected.clave}" required="true" label="password" requiredMessage="Clave Obligatoria"/>  
+                        <center> <p:commandButton class="boton" value="Ingresar" action="#{usuarioController.validado()}"/></center>
+                    </h:panelGrid>
+                </h:form>
+            </div>
+        </div>
+    </h:body>
+
+
+
+</html>

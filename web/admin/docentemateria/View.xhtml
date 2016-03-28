@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DocentemateriaViewDlg" widgetVar="DocentemateriaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDocentemateriaTitle}">
+            <h:form id="DocentemateriaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{docentemateriaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDocentemateriaLabel_iddocenteMateria}"/>
+                        <h:outputText value="#{docentemateriaController.selected.iddocenteMateria}" title="#{bundle.ViewDocentemateriaTitle_iddocenteMateria}"/>
+                        <h:outputText value="#{bundle.ViewDocentemateriaLabel_idmateria}"/>
+                        <h:outputText value="#{docentemateriaController.selected.idmateria}" title="#{bundle.ViewDocentemateriaTitle_idmateria}"/>
+                        <h:outputText value="#{bundle.ViewDocentemateriaLabel_iddocente}"/>
+                        <h:outputText value="#{docentemateriaController.selected.iddocente}" title="#{bundle.ViewDocentemateriaTitle_iddocente}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DocentemateriaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

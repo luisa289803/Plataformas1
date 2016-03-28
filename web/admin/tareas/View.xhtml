@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TareasViewDlg" widgetVar="TareasViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTareasTitle}">
+            <h:form id="TareasViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tareasController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTareasLabel_idtareas}"/>
+                        <h:outputText value="#{tareasController.selected.idtareas}" title="#{bundle.ViewTareasTitle_idtareas}"/>
+                        <h:outputText value="#{bundle.ViewTareasLabel_tarea}"/>
+                        <h:outputText value="#{tareasController.selected.tarea}" title="#{bundle.ViewTareasTitle_tarea}"/>
+                        <h:outputText value="#{bundle.ViewTareasLabel_iddocenteMateria}"/>
+                        <h:outputText value="#{tareasController.selected.iddocenteMateria}" title="#{bundle.ViewTareasTitle_iddocenteMateria}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TareasViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

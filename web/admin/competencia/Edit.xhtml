@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CompetenciaEditDlg" widgetVar="CompetenciaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCompetenciaTitle}">
+            <h:form id="CompetenciaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{competenciaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCompetenciaLabel_idcompetencia}" for="idcompetencia" />
+                        <p:inputText id="idcompetencia" value="#{competenciaController.selected.idcompetencia}" title="#{bundle.EditCompetenciaTitle_idcompetencia}" required="true" requiredMessage="#{bundle.EditCompetenciaRequiredMessage_idcompetencia}"/>
+                        <p:outputLabel value="#{bundle.EditCompetenciaLabel_descripcionCom}" for="descripcionCom" />
+                        <p:inputText id="descripcionCom" value="#{competenciaController.selected.descripcionCom}" title="#{bundle.EditCompetenciaTitle_descripcionCom}" required="true" requiredMessage="#{bundle.EditCompetenciaRequiredMessage_descripcionCom}"/>
+                        <p:outputLabel value="#{bundle.EditCompetenciaLabel_periodo}" for="periodo" />
+                        <p:inputText id="periodo" value="#{competenciaController.selected.periodo}" title="#{bundle.EditCompetenciaTitle_periodo}" required="true" requiredMessage="#{bundle.EditCompetenciaRequiredMessage_periodo}"/>
+                        <p:outputLabel value="#{bundle.EditCompetenciaLabel_idmateria}" for="idmateria" />
+                        <p:selectOneMenu id="idmateria" value="#{competenciaController.selected.idmateria}" required="true" requiredMessage="#{bundle.EditCompetenciaRequiredMessage_idmateria}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{materiaController.itemsAvailableSelectOne}"
+                                           var="idmateriaItem"
+                                           itemValue="#{idmateriaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{competenciaController.update}" value="#{bundle.Save}" update="display,:CompetenciaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CompetenciaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CompetenciaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

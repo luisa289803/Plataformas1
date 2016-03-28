@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+
+        </h:head>
+        <p:growl id="growl" life="3000" />
+        <h:body>
+
+            <p:layout fullPage="true">
+
+
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    <h:outputLabel value="Bienvenido #{usuarioController.u.idRol.tipoRol} #{usuarioController.u.usuario}"></h:outputLabel>
+
+
+                    <h:form>
+                        <p:commandButton actionListener="#{usuarioController.cerrarSesion()}" action="/login?faces-redirect=true" value="Cerrar Sesion"  style="left: 85%; top: 40%; position: absolute;" />
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Ocultar" collapsible="true">
+                    <h:form>
+
+                        <p:menu>
+                            <p:submenu label="Menu">
+                                <p:menuitem url="/faces/admin/acudiente/List.xhtml" value="Acudiente"/>
+                                <p:menuitem url="/faces/admin/auditoria/List.xhtml" value="Auditoria"/>
+                                <p:menuitem url="/faces/admin/calificaciones/List.xhtml" value="Calificaciones"/>
+                                <p:menuitem url="/faces/admin/competencia/List.xhtml" value="Competencia"/>
+                                <p:menuitem url="/faces/admin/docente/List.xhtml" value="Docente"/>
+                                <p:menuitem url="/faces/admin/docentemateria/List.xhtml" value="DocenteMateria"/>
+                                <p:menuitem url="/faces/admin/estudiante/List.xhtml" value="Estudiante"/>
+                                <p:menuitem url="/faces/admin/evaluacion/List.xhtml" value="Evaluacion"/>
+                                <p:menuitem url="/faces/admin/fallas/List.xhtml" value="Fallas"/>
+                                <p:menuitem url="/faces/admin/grado/List.xhtml" value="Grado"/>
+                                <p:menuitem url="/faces/admin/horario/List.xhtml" value="Horario"/>
+                                <p:menuitem url="/faces/admin/logro/List.xhtml" value="Logro"/>
+                                <p:menuitem url="/faces/admin/materia/List.xhtml" value="Materia"/>
+                                <p:menuitem url="/faces/admin/mensaje/List.xhtml" value="Mensaje"/>
+                                <p:menuitem url="/faces/admin/preguntas/List.xhtml" value="Preguntas"/>
+                                <p:menuitem url="/faces/admin/rol/List.xhtml" value="Rol"/>
+                                <p:menuitem url="/faces/admin/tareas/List.xhtml" value="tareas"/>
+                                <p:menuitem url="/faces/admin/tipodocumento/List.xhtml" value="tipoDocumento"/>
+                                <p:menuitem url="/faces/admin/usuario/List.xhtml" value="Usuario"/>
+
+                            </p:submenu>
+
+                        </p:menu>
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <ui:insert name="center"/> 
+
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
